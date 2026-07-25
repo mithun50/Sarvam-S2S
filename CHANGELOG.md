@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.1 (2026-07-25)
+
+### Fixes
+- Fix README links to use absolute URLs (no more 404s on PyPI)
+- Add author email to package metadata
+- Add Documentation and Changelog URLs to PyPI sidebar
+- Add badges (PyPI version, Python versions, license, stars, issues, downloads)
+- Add GitHub Pages documentation site
+
 ## 0.1.0 (2026-07-23)
 
 ### Features

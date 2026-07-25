@@ -84,7 +84,7 @@ Mic -> [STT WebSocket] -> Transcript -> [LLM Stream] -> Text -> [TTS Stream] -> 
          (Saaras v3)                    (Sarvam-105B)           (Bulbul v3)
 ```
 
-All three stages stream simultaneously. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for details.
+All three stages stream simultaneously. See [Architecture Docs](https://mithun50.github.io/Sarvam-S2S/ARCHITECTURE.html) for details.
 
 ## Models & Endpoints
 
@@ -159,7 +159,7 @@ Hindi, English (Indian), Bengali, Tamil, Telugu, Kannada, Malayalam, Marathi, Gu
 
 ## Latency
 
-Target: ~500-1000ms from user silence to first audio byte. See [docs/LATENCY.md](docs/LATENCY.md) for optimization techniques.
+Target: ~500-1000ms from user silence to first audio byte. See [Latency Guide](https://mithun50.github.io/Sarvam-S2S/LATENCY.html) for optimization techniques.
 
 ## Pricing
 

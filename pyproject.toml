@@ -1,12 +1,12 @@
 [project]
 name = "sarvam-s2s"
-version = "0.1.0"
-description = "Real-time Speech-to-Speech SDK powered by Sarvam AI — Gemini Live-like conversational AI for Indian languages"
+version = "0.1.1"
+description = "Real-time Speech-to-Speech SDK powered by Sarvam AI - Conversational AI for Indian languages"
 readme = "README.md"
 license = { text = "MIT" }
 requires-python = ">=3.10"
 authors = [
-    { name = "Mithun Gowda B" }
+    { name = "Mithun Gowda B", email = "mithungowda.b7411@gmail.com" }
 ]
 keywords = ["speech-to-speech", "sarvam", "voice-ai", "real-time", "indian-languages", "tts", "stt"]
 classifiers = [
@@ -45,6 +45,7 @@ Homepage = "https://github.com/mithun50/Sarvam-S2S"
 Documentation = "https://mithun50.github.io/Sarvam-S2S/"
 Repository = "https://github.com/mithun50/Sarvam-S2S"
 Issues = "https://github.com/mithun50/Sarvam-S2S/issues"
+Changelog = "https://github.com/mithun50/Sarvam-S2S/blob/master/CHANGELOG.md"
 
 [build-system]
 requires = ["hatchling"]
