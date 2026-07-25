@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sarvam S2S</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #0a0a0f; min-height: 100vh;
+            display: flex; flex-direction: column; color: #e0e0e0; overflow: hidden;
+        }
+        .header {
+            padding: 14px 24px; display: flex; align-items: center; justify-content: space-between;
+            border-bottom: 1px solid #1a1a2e;
+        }
+        .header h1 { font-size: 1em; font-weight: 500; color: #888; }
+        .header .controls { display: flex; gap: 8px; }
+        .header select, .header button {
+            padding: 6px 12px; border-radius: 16px; border: 1px solid #333;
+            background: #1a1a2e; color: #ccc; font-size: 0.8em; cursor: pointer;
+        }
+        .main {
+            flex: 1; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; gap: 24px;
+        }
+        .orb {
+            width: 100px; height: 100px; border-radius: 50%;
+            background: radial-gradient(circle, #1e3a5f, #0d1b2a);
+            transition: all 0.3s; box-shadow: 0 0 30px rgba(30,58,95,0.3);
+        }
+        .orb.listening { background: radial-gradient(circle, #4a8afa, #1a3a8a); box-shadow: 0 0 50px rgba(74,138,250,0.5); animation: p1 1.2s infinite; }
+        .orb.thinking { background: radial-gradient(circle, #a855f7, #5b21b6); box-shadow: 0 0 50px rgba(168,85,247,0.5); animation: p2 0.7s infinite; }
+        .orb.speaking { background: radial-gradient(circle, #34d399, #065f46); box-shadow: 0 0 50px rgba(52,211,153,0.5); animation: p3 0.5s infinite; }
+        @keyframes p1 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.1)} }
+        @keyframes p2 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
+        @keyframes p3 { 0%,100%{transform:scale(1)} 50%{transform:scale(1.14)} }
+        .status { font-size: 0.9em; color: #888; text-align: center; min-height: 22px; }
+        .transcript { max-width: 600px; width: 90%; max-height: 220px; overflow-y: auto; padding: 0 10px; }
+        .msg { margin-bottom: 10px; padding: 8px 12px; border-radius: 10px; font-size: 0.85em; line-height: 1.5; }
+        .msg.user { background: #1a2a4a; border-left: 3px solid #4a8afa; }
+        .msg.ai { background: #1a3a2a; border-left: 3px solid #34d399; }
+        .msg .lbl { font-size: 0.7em; color: #666; text-transform: uppercase; margin-bottom: 2px; }
+        .bottom {
+            padding: 16px 24px; display: flex; align-items: center; justify-content: center; gap: 12px;
+            border-top: 1px solid #1a1a2e;
+        }
+        .mic-btn {
+            width: 60px; height: 60px; border-radius: 50%; border: 2px solid #333;
+            background: #1a1a2e; color: #aaa; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
+        }
+        .mic-btn:hover { border-color: #4a8afa; color: #4a8afa; }
+        .mic-btn.active { border-color: #ef4444; background: #ef4444; color: white; animation: mp 1.5s infinite; }
+        @keyframes mp { 0%,100%{box-shadow:0 0 0 0 rgba(239,68,68,0.4)} 50%{box-shadow:0 0 0 10px rgba(239,68,68,0)} }
+        .text-area { flex: 1; max-width: 400px; display: flex; gap: 8px; }
+        .text-area input {
+            flex: 1; padding: 12px 16px; border-radius: 20px;
+            border: 1px solid #333; background: #1a1a2e; color: #e0e0e0; font-size: 0.9em;
+        }
+        .text-area input:focus { outline: none; border-color: #4a8afa; }
+        .send-btn { width: 40px; height: 40px; border-radius: 50%; border: none; background: #4a8afa; color: white; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Sarvam S2S</h1>
+        <div class="controls">
+            <select id="lang" onchange="onLangChange()">
+                <option value="en-IN">English</option>
+                <option value="hi-IN">Hindi</option>
+                <option value="ta-IN">Tamil</option>
+                <option value="te-IN">Telugu</option>
+                <option value="kn-IN">Kannada</option>
+                <option value="bn-IN">Bengali</option>
+            </select>
+            <select id="voice"></select>
+            <button onclick="clearChat()">Clear</button>
+        </div>
+    </div>
+    <div class="main">
+        <div class="orb" id="orb"></div>
+        <div class="status" id="status">Click mic to start</div>
+        <div class="transcript" id="transcript"></div>
+    </div>
+    <div class="bottom">
+        <div class="text-area">
+            <input type="text" id="inp" placeholder="Type here..." onkeydown="if(event.key==='Enter')sendText()">
+            <button class="send-btn" onclick="sendText()">&#9654;</button>
+        </div>
+        <button class="mic-btn" id="micBtn" onclick="micClick()">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 14c1.66 0 3-1.34 3-3V5c0-1.66-1.34-3-3-3S9 3.34 9 5v6c0 1.66 1.34 3 3 3z"/>
+                <path d="M17 11c0 2.76-2.24 5-5 5s-5-2.24-5-5H5c0 3.53 2.61 6.43 6 6.92V21h2v-3.08c3.39-.49 6-3.39 6-6.92h-2z"/>
+            </svg>
+        </button>
+    </div>
+<script>
+// ═══════════════════════════════════════════════════
+// SIMPLE, WORKING VOICE AGENT
+// - Click mic = toggle voice mode
+// - Voice mode: listens -> sends -> AI speaks -> listens again
+// - Mic OFF during AI speech (prevents echo)
+// - Click mic during AI speech = interrupt
+// - Type anytime = interrupt + send
+// ═══════════════════════════════════════════════════
+
+const SPEAKERS = {
+    'en-IN': ['aditya','priya','rahul','neha'],
+    'hi-IN': ['aditya','anushka','rahul','priya'],
+    'ta-IN': ['kavitha','aditya','priya'],
+    'te-IN': ['kavitha','aditya','priya'],
+    'kn-IN': ['kavitha','aditya','priya'],
+    'bn-IN': ['anushka','aditya','rahul'],
+};
+
+let ws, state='idle', voiceMode=false, recognition=null;
+let audioQueue=[], isPlaying=false, currentAudio=null;
+
+const orb = document.getElementById('orb');
+const statusEl = document.getElementById('status');
+const micBtn = document.getElementById('micBtn');
+
+function onLangChange() {
+    const lang = document.getElementById('lang').value;
+    const s = SPEAKERS[lang] || SPEAKERS['en-IN'];
+    document.getElementById('voice').innerHTML = s.map(v=>`<option value="${v}">${v}</option>`).join('');
+}
+onLangChange();
+
+// ─── WebSocket ─────────────────────────
+function connect() {
+    const p = location.protocol==='https:'?'wss:':'ws:';
+    ws = new WebSocket(`${p}//${location.host}/ws/chat`);
+    ws.onopen = () => setUI('idle','Ready. Click mic to talk.');
+    ws.onclose = () => setTimeout(connect, 2000);
+    ws.onmessage = e => onMsg(JSON.parse(e.data));
+}
+
+function onMsg(d) {
+    if (d.type==='stream_start') { setUI('thinking','Thinking...'); }
+    else if (d.type==='token') { appendAI(d.token); }
+    else if (d.type==='audio_chunk') { audioQueue.push(d.audio); setUI('speaking','Speaking...'); playNext(); }
+    else if (d.type==='response_complete') { finalizeAI(d.text); if(!isPlaying&&audioQueue.length===0) doneSpeak(); }
+    else if (d.type==='error') { addMsg('ai','Error: '+d.message); doneSpeak(); }
+    else if (d.type==='cleared') { document.getElementById('transcript').innerHTML=''; }
+}
+
+// ─── UI State ──────────────────────────
+function setUI(s, txt) { state=s; orb.className='orb '+s; statusEl.textContent=txt||''; }
+
+// ─── Mic Click ─────────────────────────
+function micClick() {
+    // If AI is speaking -> INTERRUPT
+    if (state==='speaking') {
+        interrupt();
+        return;
+    }
+    // Toggle voice mode
+    if (voiceMode) { stopVoice(); }
+    else { startVoice(); }
+}
+
+function startVoice() {
+    voiceMode = true;
+    micBtn.classList.add('active');
+    listen();
+}
+
+function stopVoice() {
+    voiceMode = false;
+    micBtn.classList.remove('active');
+    if (recognition) { recognition.abort(); recognition=null; }
+    setUI('idle','Ready');
+}
+
+// ─── Interrupt ─────────────────────────
+function interrupt() {
+    // Stop all audio immediately
+    audioQueue = [];
+    if (currentAudio) { currentAudio.pause(); currentAudio=null; }
+    isPlaying = false;
+    // Tell server to discard current response
+    if (ws && ws.readyState===WebSocket.OPEN) {
+        ws.send(JSON.stringify({type:'interrupt'}));
+    }
+    setUI('idle','Interrupted');
+    // Resume listening
+    if (voiceMode) setTimeout(listen, 300);
+}
+
+// ─── Listen ────────────────────────────
+function listen() {
+    if (!voiceMode) return;
+    if (state==='speaking'||state==='thinking') return;
+
+    const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    if (!SR) { alert('Use Chrome'); return; }
+
+    if (recognition) { recognition.abort(); recognition=null; }
+
+    recognition = new SR();
+    recognition.lang = document.getElementById('lang').value;
+    recognition.interimResults = true;
+    recognition.continuous = false;
+
+    recognition.onstart = () => setUI('listening','Listening...');
+
+    recognition.onresult = (e) => {
+        const r = e.results[e.results.length-1];
+        const txt = r[0].transcript;
+        if (r.isFinal && txt.trim()) {
+            recognition.abort(); recognition=null;
+            send(txt.trim());
+        } else {
+            statusEl.textContent = txt+'...';
+        }
+    };
+
+    recognition.onend = () => {
+        // Auto-restart if still in voice mode and idle
+        if (voiceMode && state!=='thinking' && state!=='speaking') {
+            setTimeout(listen, 300);
+        }
+    };
+
+    recognition.onerror = (e) => {
+        if (e.error==='no-speech'||e.error==='aborted') {
+            if (voiceMode && state!=='thinking' && state!=='speaking') setTimeout(listen, 300);
+        }
+    };
+
+    recognition.start();
+}
+
+// ─── Done Speaking ─────────────────────
+function doneSpeak() {
+    setUI('idle', voiceMode ? 'Listening...' : 'Ready');
+    // Resume listening after AI finishes (with delay to avoid echo)
+    if (voiceMode) setTimeout(listen, 800);
+}
+
+// ─── Audio Playback ────────────────────
+function playNext() {
+    if (isPlaying || audioQueue.length===0) return;
+
+    // STOP mic while playing to prevent echo
+    if (recognition) { recognition.abort(); recognition=null; }
+
+    isPlaying = true;
+    const b64 = audioQueue.shift();
+    try {
+        const bin = atob(b64);
+        const bytes = new Uint8Array(bin.length);
+        for (let i=0; i<bin.length; i++) bytes[i]=bin.charCodeAt(i);
+        const blob = new Blob([bytes],{type:'audio/wav'});
+        const url = URL.createObjectURL(blob);
+        currentAudio = new Audio(url);
+        currentAudio.onended = () => { isPlaying=false; URL.revokeObjectURL(url); if(audioQueue.length>0)playNext(); else doneSpeak(); };
+        currentAudio.onerror = () => { isPlaying=false; if(audioQueue.length>0)playNext(); else doneSpeak(); };
+        currentAudio.play().catch(()=>{ isPlaying=false; doneSpeak(); });
+    } catch(e) { isPlaying=false; if(audioQueue.length>0)playNext(); else doneSpeak(); }
+}
+
+// ─── Send Message ──────────────────────
+function sendText() {
+    const inp = document.getElementById('inp');
+    const t = inp.value.trim();
+    if (!t) return;
+    inp.value = '';
+    // Interrupt if speaking
+    if (state==='speaking') interrupt();
+    send(t);
+}
+
+function send(text) {
+    if (!ws||ws.readyState!==WebSocket.OPEN||!text) return;
+    if (state==='thinking') return; // Already processing
+
+    // Stop mic
+    if (recognition) { recognition.abort(); recognition=null; }
+
+    addMsg('user', text);
+    setUI('thinking','Thinking...');
+
+    ws.send(JSON.stringify({
+        type:'text', text:text,
+        language: document.getElementById('lang').value,
+        speaker: document.getElementById('voice').value,
+        context:'', system_prompt:'',
+    }));
+}
+
+// ─── Transcript ────────────────────────
+let aiBubble = null;
+function addMsg(role, text) {
+    const t = document.getElementById('transcript');
+    const d = document.createElement('div');
+    d.className='msg '+role;
+    d.innerHTML=`<div class="lbl">${role==='user'?'You':'AI'}</div><span class="txt">${text}</span>`;
+    t.appendChild(d); t.scrollTop=t.scrollHeight;
+    while(t.children.length>20) t.removeChild(t.firstChild);
+    aiBubble = role==='ai' ? d.querySelector('.txt') : null;
+}
+function appendAI(token) { if(!aiBubble)addMsg('ai',token); else aiBubble.textContent+=token; document.getElementById('transcript').scrollTop=99999; }
+function finalizeAI(text) { if(aiBubble)aiBubble.textContent=text; aiBubble=null; }
+function clearChat() { if(ws&&ws.readyState===WebSocket.OPEN) ws.send(JSON.stringify({type:'clear'})); }
+
+// ─── Init ──────────────────────────────
+connect();
+</script>
+</body>
+</html>
