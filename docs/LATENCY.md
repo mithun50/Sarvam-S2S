@@ -3,6 +3,9 @@ layout: default
 title: Latency Optimization
 ---
 
+[Home](index.html) | [Architecture](ARCHITECTURE.html) | [API Reference](API.html) | [Latency Guide](LATENCY.html)
+
+---
 
 # Latency Optimization Guide
 
@@ -32,7 +35,7 @@ The single biggest latency win. By setting `reasoning_effort` to `null` in the S
 payload = {
     "model": "sarvam-105b",
     "messages": [...],
-    "reasoning_effort": None,  # Disables thinking — instant tokens
+    "reasoning_effort": None,  # Disables thinking, instant tokens
     "stream": True,
 }
 ```

@@ -3,8 +3,11 @@ layout: default
 title: Architecture
 ---
 
+[Home](index.html) | [Architecture](ARCHITECTURE.html) | [API Reference](API.html) | [Latency Guide](LATENCY.html)
 
-# Sarvam Speech-to-Speech SDK — Architecture
+---
+
+# Sarvam Speech-to-Speech SDK - Architecture
 
 ## Vision
 A Python SDK that delivers real-time conversational AI by orchestrating Sarvam AI's STT, LLM, and TTS APIs in a streaming pipeline. The user speaks and gets intelligent spoken responses with sub-second latency.
@@ -49,7 +52,7 @@ Natural interruption model inspired by human conversation:
 
 ### 3. Echo Prevention
 The SDK prevents TTS audio from being picked up by the microphone and re-processed:
-- Audio player state is tracked — STT ignores signals during active playback
+- Audio player state is tracked. STT ignores signals during active playback
 - VAD `speech_start` events during SPEAKING state trigger barge-in (not echo processing)
 - Short silence gap after TTS completion before re-enabling transcript processing
 
@@ -71,7 +74,7 @@ Don't wait for the full LLM response. As soon as a phrase boundary is detected i
 ## Key Configuration Choices
 
 ### `reasoning_effort: null`
-Setting `reasoning_effort` to `null` in the Sarvam LLM request disables the model's internal "thinking" step. This produces **instant token flow** — critical for voice latency where every 100ms matters. The model skips chain-of-thought and outputs tokens directly.
+Setting `reasoning_effort` to `null` in the Sarvam LLM request disables the model's internal "thinking" step. This produces **instant token flow**, critical for voice latency where every 100ms matters. The model skips chain-of-thought and outputs tokens directly.
 
 ### HTTP Streaming TTS (Primary for Web)
 The HTTP streaming endpoint (`POST https://api.sarvam.ai/text-to-speech/stream`) provides:
@@ -81,9 +84,9 @@ The HTTP streaming endpoint (`POST https://api.sarvam.ai/text-to-speech/stream`)
 - Fallback to REST (`POST https://api.sarvam.ai/text-to-speech`) if streaming fails
 
 ### TTS Transport Priority
-1. **WebSocket** — Lowest latency for multi-sentence streaming within a single connection
-2. **HTTP Streaming** — Low TTFB, simpler lifecycle, ideal for sentence-by-sentence
-3. **REST** — Highest latency, most reliable fallback
+1. **WebSocket** - Lowest latency for multi-sentence streaming within a single connection
+2. **HTTP Streaming** - Low TTFB, simpler lifecycle, ideal for sentence-by-sentence
+3. **REST** - Highest latency, most reliable fallback
 
 ---
 
@@ -153,7 +156,7 @@ class TTSEngine:
 ### AudioCapture / AudioPlayer
 ```python
 class AudioCapture:
-    """Microphone input — 16-bit PCM, mono, 16kHz, 32ms chunks"""
+    """Microphone input - 16-bit PCM, mono, 16kHz, 32ms chunks"""
     async def stream() -> AsyncIterator[bytes]
 
 class AudioPlayer:

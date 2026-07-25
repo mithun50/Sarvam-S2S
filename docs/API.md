@@ -3,6 +3,9 @@ layout: default
 title: API Reference
 ---
 
+[Home](index.html) | [Architecture](ARCHITECTURE.html) | [API Reference](API.html) | [Latency Guide](LATENCY.html)
+
+---
 
 # API Reference
 
@@ -233,9 +236,9 @@ from sarvam_s2s.engines.tts import TTSEngine
 
 ### Transport Priority
 
-1. **WebSocket** — Lowest latency for multi-sentence (persistent connection)
-2. **HTTP Streaming** — Low TTFB, simpler (per-request)
-3. **REST** — Highest latency, most reliable (fallback)
+1. **WebSocket** - Lowest latency for multi-sentence (persistent connection)
+2. **HTTP Streaming** - Low TTFB, simpler (per-request)
+3. **REST** - Highest latency, most reliable (fallback)
 
 ### Example: Standalone TTS
 

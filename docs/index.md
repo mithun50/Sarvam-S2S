@@ -3,6 +3,10 @@ layout: default
 title: Home
 ---
 
+[Home](index.html) | [Architecture](ARCHITECTURE.html) | [API Reference](API.html) | [Latency Guide](LATENCY.html)
+
+---
+
 # Sarvam S2S
 
 Real-time Speech-to-Speech SDK for Indian languages, powered by [Sarvam AI](https://sarvam.ai).
@@ -221,9 +225,9 @@ Approximately Rs.4.50 per 5-minute conversation:
 
 ## Documentation
 
-- [Architecture](ARCHITECTURE.md) - System design, state machine, streaming pipeline, barge-in handling
-- [API Reference](API.md) - Configuration options, methods, events, type definitions
-- [Latency Guide](LATENCY.md) - Optimization techniques for sub-second time-to-first-audio
+- [Architecture](ARCHITECTURE.html) - System design, state machine, streaming pipeline, barge-in handling
+- [API Reference](API.html) - Configuration options, methods, events, type definitions
+- [Latency Guide](LATENCY.html) - Optimization techniques for sub-second time-to-first-audio
 
 ## Setup
 
