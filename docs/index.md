@@ -9,6 +9,13 @@ title: Home
 
 # Sarvam S2S
 
+[![PyPI version](https://img.shields.io/pypi/v/sarvam-s2s.svg)](https://pypi.org/project/sarvam-s2s/)
+[![Python 3.10+](https://img.shields.io/pypi/pyversions/sarvam-s2s.svg)](https://pypi.org/project/sarvam-s2s/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/mithun50/Sarvam-S2S/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/mithun50/Sarvam-S2S.svg)](https://github.com/mithun50/Sarvam-S2S/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mithun50/Sarvam-S2S.svg)](https://github.com/mithun50/Sarvam-S2S/issues)
+[![Downloads](https://img.shields.io/pypi/dm/sarvam-s2s.svg)](https://pypi.org/project/sarvam-s2s/)
+
 Real-time Speech-to-Speech SDK for Indian languages, powered by [Sarvam AI](https://sarvam.ai).
 
 Build voice AI assistants with Sarvam's STT + LLM + TTS stack, optimized for 11 Indian languages with sub-second latency.

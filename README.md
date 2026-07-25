@@ -1,18 +1,25 @@
-# Sarvam S2S — Speech-to-Speech SDK
+# Sarvam S2S - Speech-to-Speech SDK
+
+[![PyPI version](https://img.shields.io/pypi/v/sarvam-s2s.svg)](https://pypi.org/project/sarvam-s2s/)
+[![Python 3.10+](https://img.shields.io/pypi/pyversions/sarvam-s2s.svg)](https://pypi.org/project/sarvam-s2s/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/mithun50/Sarvam-S2S/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/mithun50/Sarvam-S2S.svg)](https://github.com/mithun50/Sarvam-S2S/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/mithun50/Sarvam-S2S.svg)](https://github.com/mithun50/Sarvam-S2S/issues)
+[![Documentation](https://img.shields.io/badge/docs-GitHub%20Pages-blue)](https://mithun50.github.io/Sarvam-S2S/)
 
 Real-time conversational AI SDK for Indian languages, powered by [Sarvam AI](https://sarvam.ai).
 
-> Build voice AI assistants with Sarvam's STT + LLM + TTS stack — optimized for 11 Indian languages with sub-second latency.
+> Build voice AI assistants with Sarvam's STT + LLM + TTS stack, optimized for 11 Indian languages with sub-second latency.
 
 ## Features
 
-- Real-time streaming — Audio in, audio out with ~500-1000ms latency
-- 11 Indian languages — Hindi, Tamil, Telugu, Kannada, Bengali, and more
-- Barge-in support — Interrupt the AI mid-sentence naturally
-- LLM-agnostic — Sarvam-105B/30B, OpenAI, Groq, or any compatible endpoint
-- Context management — RAG, few-shot examples, conversation memory
-- 16+ voices — Natural speech with Bulbul v3 (aditya, priya, kavitha, anushka, rahul, neha, and more)
-- Simple SDK — 5 lines to start a conversation
+- Real-time streaming - Audio in, audio out with ~500-1000ms latency
+- 11 Indian languages - Hindi, Tamil, Telugu, Kannada, Bengali, and more
+- Barge-in support - Interrupt the AI mid-sentence naturally
+- LLM-agnostic - Sarvam-105B/30B, OpenAI, Groq, or any compatible endpoint
+- Context management - RAG, few-shot examples, conversation memory
+- 16+ voices - Natural speech with Bulbul v3 (aditya, priya, kavitha, anushka, rahul, neha, and more)
+- Simple SDK - 5 lines to start a conversation
 
 ## Quick Start
 
