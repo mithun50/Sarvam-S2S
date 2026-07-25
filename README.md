@@ -189,7 +189,7 @@ sarvam-s2s/
 ## Development
 
 ```bash
-git clone https://github.com/your-org/sarvam-s2s
+git clone https://github.com/mithun50/Sarvam-S2S
 cd sarvam-s2s
 pip install -e ".[dev]"
 pytest

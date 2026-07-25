@@ -41,10 +41,10 @@ dev = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/your-org/sarvam-s2s"
-Documentation = "https://github.com/your-org/sarvam-s2s/tree/main/docs"
-Repository = "https://github.com/your-org/sarvam-s2s"
-Issues = "https://github.com/your-org/sarvam-s2s/issues"
+Homepage = "https://github.com/mithun50/Sarvam-S2S"
+Documentation = "https://mithun50.github.io/Sarvam-S2S/"
+Repository = "https://github.com/mithun50/Sarvam-S2S"
+Issues = "https://github.com/mithun50/Sarvam-S2S/issues"
 
 [build-system]
 requires = ["hatchling"]

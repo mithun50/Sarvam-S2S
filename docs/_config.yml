@@ -1,0 +1,14 @@
+title: Sarvam S2S
+description: Real-time Speech-to-Speech SDK for Indian Languages
+remote_theme: pages-themes/midnight@v0.2.0
+plugins:
+  - jekyll-remote-theme
+
+exclude:
+  - src/
+  - demos/
+  - tests/
+  - examples/
+  - "*.py"
+  - "*.toml"
+  - .env*
