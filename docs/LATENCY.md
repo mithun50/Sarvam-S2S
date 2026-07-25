@@ -1,3 +1,9 @@
+---
+layout: default
+title: Latency Optimization
+---
+
+
 # Latency Optimization Guide
 
 This document explains the techniques used in the Sarvam S2S SDK to achieve ~500-1000ms end-to-end latency (user stops speaking → first audio byte plays).

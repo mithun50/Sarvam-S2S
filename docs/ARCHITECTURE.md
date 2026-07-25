@@ -1,3 +1,9 @@
+---
+layout: default
+title: Architecture
+---
+
+
 # Sarvam Speech-to-Speech SDK — Architecture
 
 ## Vision
