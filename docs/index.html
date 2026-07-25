@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarvam S2S — Speech-to-Speech SDK for Indian Languages</title>
+    <title>Sarvam S2S - Speech-to-Speech SDK for Indian Languages</title>
     <meta name="description" content="Real-time conversational AI SDK for Indian languages powered by Sarvam AI. Build voice AI assistants with STT + LLM + TTS stack.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -416,8 +416,14 @@
         }
 
         .pricing-breakdown li::before {
-            content: '→ ';
-            color: var(--accent-green);
+            content: '';
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            vertical-align: middle;
         }
 
         /* Docs Links */
@@ -497,9 +503,9 @@
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-badge">🇮🇳 Built for Indian Languages</div>
+        <div class="hero-badge"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg> Built for Indian Languages</div>
         <h1>Real-time <span class="gradient">Speech-to-Speech</span> SDK</h1>
-        <p>Build voice AI assistants with Sarvam's STT + LLM + TTS stack — optimized for 11 Indian languages with sub-second latency.</p>
+        <p>Build voice AI assistants with Sarvam's STT + LLM + TTS stack, optimized for 11 Indian languages with sub-second latency.</p>
         <div class="hero-buttons">
             <a href="#quickstart" class="btn btn-primary">Get Started</a>
             <a href="https://github.com/mithun50/Sarvam-S2S" class="btn btn-secondary" target="_blank">View on GitHub</a>
@@ -516,32 +522,32 @@
         <p class="section-subtitle">Everything you need to build production-grade voice AI for Indic languages.</p>
         <div class="features-grid">
             <div class="feature-card">
-                <div class="feature-icon">⚡</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
                 <h3>Real-time Streaming</h3>
                 <p>Audio in, audio out with ~500-1000ms latency. All three stages (STT, LLM, TTS) stream simultaneously.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🗣️</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-green)" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg></div>
                 <h3>Barge-in Support</h3>
                 <p>Interrupt the AI mid-sentence naturally. VAD detects speech and instantly stops playback.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🌐</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary-light)" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg></div>
                 <h3>11 Indian Languages</h3>
                 <p>Hindi, Tamil, Telugu, Kannada, Bengali, Malayalam, Marathi, Gujarati, Punjabi, Odia, and English (Indian).</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🤖</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-pink)" stroke-width="2"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4"/><line x1="8" y1="16" x2="8" y2="16"/><line x1="16" y1="16" x2="16" y2="16"/></svg></div>
                 <h3>LLM-agnostic</h3>
                 <p>Sarvam-105B/30B, OpenAI GPT-4o, Groq Llama, or any OpenAI-compatible endpoint.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🎭</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg></div>
                 <h3>16+ Natural Voices</h3>
                 <p>Bulbul v3 TTS with voices like Aditya, Priya, Kavitha, Anushka, Rahul, and many more.</p>
             </div>
             <div class="feature-card">
-                <div class="feature-icon">🧠</div>
+                <div class="feature-icon"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--accent-orange)" stroke-width="2"><path d="M9.5 2A5.5 5.5 0 0 0 4 7.5c0 1.5.5 2.8 1.4 3.8L12 19l6.6-7.7A5.5 5.5 0 0 0 14.5 2a5.5 5.5 0 0 0-5 3"/><circle cx="7.5" cy="7.5" r="1"/><circle cx="16.5" cy="7.5" r="1"/></svg></div>
                 <h3>Context Management</h3>
                 <p>RAG callbacks, few-shot examples, static knowledge bases, and conversation memory with sliding window.</p>
             </div>
@@ -555,27 +561,27 @@
         <div class="architecture">
             <div class="pipeline">
                 <div class="pipeline-node">
-                    <div class="name">🎤 Mic</div>
+                    <div class="name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/></svg> Mic</div>
                     <div class="model">16kHz PCM</div>
                 </div>
-                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
                 <div class="pipeline-node">
                     <div class="name">STT</div>
                     <div class="model">Saaras v3</div>
                 </div>
-                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
                 <div class="pipeline-node">
                     <div class="name">LLM</div>
                     <div class="model">Sarvam-105B</div>
                 </div>
-                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
                 <div class="pipeline-node">
                     <div class="name">TTS</div>
                     <div class="model">Bulbul v3</div>
                 </div>
-                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-arrow"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></div>
                 <div class="pipeline-node">
-                    <div class="name">🔊 Speaker</div>
+                    <div class="name"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/></svg> Speaker</div>
                     <div class="model">16kHz PCM</div>
                 </div>
             </div>
@@ -615,17 +621,17 @@ asyncio.<span class="function">run</span>(main())</pre>
     <section class="section" id="languages">
         <h2 class="section-title">Supported Languages</h2>
         <div class="languages">
-            <span class="lang-tag">🇮🇳 Hindi</span>
-            <span class="lang-tag">🇮🇳 English (Indian)</span>
-            <span class="lang-tag">🇮🇳 Bengali</span>
-            <span class="lang-tag">🇮🇳 Tamil</span>
-            <span class="lang-tag">🇮🇳 Telugu</span>
-            <span class="lang-tag">🇮🇳 Kannada</span>
-            <span class="lang-tag">🇮🇳 Malayalam</span>
-            <span class="lang-tag">🇮🇳 Marathi</span>
-            <span class="lang-tag">🇮🇳 Gujarati</span>
-            <span class="lang-tag">🇮🇳 Punjabi</span>
-            <span class="lang-tag">🇮🇳 Odia</span>
+            <span class="lang-tag">Hindi</span>
+            <span class="lang-tag">English (Indian)</span>
+            <span class="lang-tag">Bengali</span>
+            <span class="lang-tag">Tamil</span>
+            <span class="lang-tag">Telugu</span>
+            <span class="lang-tag">Kannada</span>
+            <span class="lang-tag">Malayalam</span>
+            <span class="lang-tag">Marathi</span>
+            <span class="lang-tag">Gujarati</span>
+            <span class="lang-tag">Punjabi</span>
+            <span class="lang-tag">Odia</span>
         </div>
 
         <h3 style="text-align:center; margin-top: 3rem; margin-bottom: 0.5rem;">Available Voices</h3>
@@ -670,19 +676,19 @@ asyncio.<span class="function">run</span>(main())</pre>
         <p class="section-subtitle">Deep dives into the SDK internals.</p>
         <div class="docs-grid">
             <a href="ARCHITECTURE.md" class="doc-link">
-                <h3>🏗️ Architecture</h3>
+                <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg> Architecture</h3>
                 <p>System design, state machine, streaming pipeline, and barge-in handling.</p>
             </a>
             <a href="API.md" class="doc-link">
-                <h3>📖 API Reference</h3>
+                <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> API Reference</h3>
                 <p>Complete configuration options, methods, events, and type definitions.</p>
             </a>
             <a href="LATENCY.md" class="doc-link">
-                <h3>⚡ Latency Guide</h3>
+                <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Latency Guide</h3>
                 <p>Optimization techniques for sub-second time-to-first-audio.</p>
             </a>
             <a href="https://github.com/mithun50/Sarvam-S2S/tree/master/demos" class="doc-link">
-                <h3>🎮 Demos</h3>
+                <h3><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="vertical-align:middle"><polygon points="5 3 19 12 5 21 5 3"/></svg> Demos</h3>
                 <p>Interactive examples: web demo, multilingual, custom LLM, RAG context.</p>
             </a>
         </div>
@@ -691,8 +697,8 @@ asyncio.<span class="function">run</span>(main())</pre>
     <!-- Footer -->
     <footer>
         <p>
-            <strong>Sarvam S2S</strong> — Built by <a href="https://github.com/mithun50">Mithun Gowda B</a> •
-            Powered by <a href="https://sarvam.ai" target="_blank">Sarvam AI</a> •
+            <strong>Sarvam S2S</strong> | Built by <a href="https://github.com/mithun50">Mithun Gowda B</a> |
+            Powered by <a href="https://sarvam.ai" target="_blank">Sarvam AI</a> |
             <a href="https://github.com/mithun50/Sarvam-S2S/blob/master/LICENSE">MIT License</a>
         </p>
     </footer>
